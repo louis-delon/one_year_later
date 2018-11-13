@@ -12,7 +12,7 @@ gem 'rails', '~> 5.1.6'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
-gem 'devise'
+gem 'devise-jwt'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -31,6 +31,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails' #gemfile
   gem 'guard-rspec', require: false # permet de relancer les tests automatiquement
+  gem 'factory_girl_rails' #permet de créer des jeux de données pour les tests
 
 end
 
