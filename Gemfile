@@ -31,7 +31,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails' #gemfile
   gem 'guard-rspec', require: false # permet de relancer les tests automatiquement
-  gem 'factory_girl_rails' #permet de créer des jeux de données pour les tests
+  gem 'factory_bot_rails' #permet de créer des jeux de données pour les tests
 
 end
 
