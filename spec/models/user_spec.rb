@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  context 'validation and association of user'
   # L'enregistrement d'un user doit être persisté en base de donnée
   it "is valid with valid attributes" do
     user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
