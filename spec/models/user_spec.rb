@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
   end
 
   it "isn't valid without valid birthday" do
-    user = User.new(email: 'louis@holdies.com', password: 'password', username: nil, birthday: nil)
+    user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: nil)
     expect(user).to_not be_valid
   end
 

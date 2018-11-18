@@ -2,31 +2,50 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
 
-  it "is not valid without a name" do
-   category = Category.new(name: nil, weigth: 1)
-   expect(category).to_not be_valid
-  end
+  context "association and validations" do
 
-  it 'should persist a category' do
-    Category.create(name: 'test', weight: 1)
-    expect Category.count.to(eq(1))
-  end
+    it 'should have association with category table', type: :model do
+      user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      category = Category.new(name: 'louis', weigth: 1)
+      user.categories << category
+      user.save!
+      expect(user.categories.count).to eq(1)
+      expect(Category.count).to eq(1)
+    end
 
-  it 'should have association with category table', type: :model do
-    user = User.create(email: 'louis@holdies.com', password: 'password', username: 'loulou')
-    category1 = Category.create(name: 'louis', weigth: 1)
-    category2 = Category.create(name: 'delon', weigth: 2)
-    expect (user.categories).to be_an_instance_of(Array)
-    expect (user.categories.count).to eq(2)
-  end
+    it "is not valid without a name" do
+      user = User.create(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      category = Category.new(name: nil, weigth: 1)
+      user.categories << category
+      category.save
+      expect(category).to_not be_valid
+    end
 
-  it 'should destroy categories if user is destroyed' do
-    user = User.create(email: 'louis@holdies.com', password: 'password', username: 'loulou')
-    category1 = Category.create(name: 'louis', weigth: 1)
-    category2 = Category.create(name: 'delon', weigth: 2)
-    user.destroy
-    expect(category1).to be_nil
-    expect(category2).to be_nil
-  end
+    it "is not valid without a weigth" do
+      user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      category = Category.new(name: "travail", weigth: nil)
+      user.categories << category
+      user.save
+      expect(category).to_not be_valid
+    end
 
+    it 'should persist a category' do
+      user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      category = Category.new(name: 'test', weigth: 1)
+      user.categories << category
+      user.save!
+      expect(Category.count).to eq(1)
+    end
+
+    it 'should destroy categories if user is destroyed' do
+      user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      category1 = Category.new(name: 'louis', weigth: 1)
+      category2 = Category.new(name: 'louis', weigth: 1)
+      user.categories += [category1, category2]
+      user.save!
+      user.destroy
+      expect(User.count).to eq(0)
+      expect(Category.count).to eq(0)
+    end
+  end
 end
