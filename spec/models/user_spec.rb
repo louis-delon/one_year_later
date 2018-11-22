@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   context 'User model validation' do
   #L'enregistrement d'un user doit être persisté en base de donnée
     it "is valid with valid attributes" do
-      user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      user = build(:user)
       expect(user).to be_valid
     end
 
@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
 
   context 'User model persistance' do
     it 'should persist a user' do
-      User.create(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+      create(:user)
       expect(User.count).to eq(1)
     end
   end
