@@ -4,14 +4,7 @@ RSpec.describe Category, type: :model do
 
   context "category associations" do
 
-    it 'should have many users', type: :model do
-      user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
-      category = Category.new(name: 'famille', weigth: 1)
-      category.users << user
-      category.save!
-      expect(category.users.count).to eq(1)
-      expect(User.count).to eq(1)
-    end
+    it { should have_many(:users) }
 
   end
 
@@ -56,6 +49,17 @@ RSpec.describe Category, type: :model do
   end
 
 end
+
+
+
+# it 'should have many users', type: :model do
+#   user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
+#   category = Category.new(name: 'famille', weigth: 1)
+#   category.users << user
+#   category.save!
+#   expect(category.users.count).to eq(1)
+#   expect(User.count).to eq(1)
+# end
 
 # it "should not be valid without a name" do
 #   category = Category.new(name: nil, weigth: 1)
