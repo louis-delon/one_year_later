@@ -3,6 +3,5 @@ FactoryBot.define do
     title { "MyString" }
     description { "MyText" }
     deadline { "MyString" }
-    objective { nil }
   end
 end
