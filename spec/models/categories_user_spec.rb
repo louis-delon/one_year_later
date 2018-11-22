@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe CategoriesUser, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  context "associations" do
+
+    it "should belong to category" do
+    end
+
+    it "should belong to user" do
+    end
+
+  end
 end
