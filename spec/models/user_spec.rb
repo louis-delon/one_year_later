@@ -17,24 +17,18 @@ RSpec.describe User, type: :model do
   end
 
   context 'User model persistance' do
-
     it 'should persist a user' do
       User.create(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
       expect(User.count).to eq(1)
     end
-
   end
 
   context 'User model associations' do
-
     it { should have_many(:categories_users) }
     it { should have_many(:categories) }
-
   end
 
 end
-
-
 
 # it "is valid with valid attributes" do
 #   user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
