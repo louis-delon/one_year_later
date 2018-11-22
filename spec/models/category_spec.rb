@@ -17,20 +17,18 @@ RSpec.describe Category, type: :model do
 
   context "category validation" do
 
-    it "should not be valid without a name" do
-      category = Category.new(name: nil, weigth: 1)
-      expect(category).to_not be_valid
-    end
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:weigth) }
 
-    it "is not valid without a weigth" do
-      category = Category.new(name: "travail", weigth: nil)
-      expect(category).to_not be_valid
-    end
+  end
+
+  context "category persistence" do
 
     it 'should persist a category' do
       category = Category.create(name: 'test', weigth: 1)
       expect(Category.count).to eq(1)
     end
+
   end
 
   context 'category destroy dependance' do
@@ -58,3 +56,13 @@ RSpec.describe Category, type: :model do
   end
 
 end
+
+# it "should not be valid without a name" do
+#   category = Category.new(name: nil, weigth: 1)
+#   expect(category).to_not be_valid
+# end
+
+# it "is not valid without a weigth" do
+#   category = Category.new(name: "travail", weigth: nil)
+#   expect(category).to_not be_valid
+# end
