@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
 
-  context "associations" do
+  context "category associations" do
 
     it 'should have many users', type: :model do
       user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
@@ -12,11 +12,12 @@ RSpec.describe Category, type: :model do
       expect(category.users.count).to eq(1)
       expect(User.count).to eq(1)
     end
+
   end
 
-  context "validation" do
+  context "category validation" do
 
-    it "category is not valid without a name" do
+    it "should not be valid without a name" do
       category = Category.new(name: nil, weigth: 1)
       expect(category).to_not be_valid
     end
@@ -32,7 +33,7 @@ RSpec.describe Category, type: :model do
     end
   end
 
-  context 'destroy dependance' do
+  context 'category destroy dependance' do
 
     it 'should destroy users_categories if user is destroyed' do
       user = User.new(email: 'louis@holdies.com', password: 'password', username: 'loulou', birthday: '26/12/1977')
@@ -47,11 +48,13 @@ RSpec.describe Category, type: :model do
 
   end
 
-  context 'persistance' do
+  context 'category persistance' do
+
     it 'should persist a category' do
       category = Category.create(name: 'louis', weigth: 1)
       expect(Category.count).to eq(1)
     end
+
   end
 
 end

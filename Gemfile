@@ -32,6 +32,8 @@ group :development, :test do
   gem 'rspec-rails' #gemfile
   gem 'guard-rspec', require: false # permet de relancer les tests automatiquement
   gem 'factory_bot_rails' #permet de créer des jeux de données pour les tests
+  gem 'shoulda-matchers', '4.0.0.rc1'
+  gem 'rails-controller-testing' # If you are using Rails 5.x
 
 end
 
