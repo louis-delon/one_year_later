@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
   end
 
   context 'User model associations' do
-    it { should have_many(:categories_users) }
+    it { should have_many(:categories_users).dependent(:destroy) }
     it { should have_many(:categories) }
   end
 

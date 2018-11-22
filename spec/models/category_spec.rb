@@ -4,6 +4,7 @@ RSpec.describe Category, type: :model do
 
   context "category associations" do
     it { should have_many(:users) }
+    it { should have_many(:categories_users).dependent(:destroy) }
   end
 
   context "category validation" do
