@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :user do
-    username { 'loulou' }
-    password { 'password' }
-    email { 'louis@holdies.com' }
-    birthday { '26/12/1977' }
+    sequence(:username) { |i| 'username#{i}' }
+    sequence(:password) { |i| 'password#{i}' }
+    sequence(:email) { |i| 'person#{i}@test.com' }
+    sequence(:birthday) { |i|'#{i}/12/1977' }
   end
 end
 
