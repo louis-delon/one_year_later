@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181122152326) do
+ActiveRecord::Schema.define(version: 20181122152534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "deadline"
+    t.bigint "objective_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["objective_id"], name: "index_actions_on_objective_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -67,6 +77,7 @@ ActiveRecord::Schema.define(version: 20181122152326) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "objectives"
   add_foreign_key "categories_users", "categories"
   add_foreign_key "categories_users", "users"
   add_foreign_key "objectives", "states"
